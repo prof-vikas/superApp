@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "562517261573",
+    "project_id": "contactmanager-18976",
+    "storage_bucket": "contactmanager-18976.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562517261573:android:f78b79a6978df8ee100b6c",
+        "android_client_info": {
+          "package_name": "com.sipl.cm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeTe435AJJwu6LEqNISn6WvoxTRDPkIVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
