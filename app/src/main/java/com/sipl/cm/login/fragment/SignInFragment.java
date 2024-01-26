@@ -2,6 +2,8 @@ package com.sipl.cm.login.fragment;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static com.sipl.cm.utils.PreferencesConstants.LOGIN_CREDENTIALS;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -73,10 +75,7 @@ public class SignInFragment extends Fragment {
                         String userName = dataSnapshot.child("userName").getValue(String.class);
                         String userRole = dataSnapshot.child("userRole").getValue(String.class);
                         Log.d(TAG, "onDataChange: SignInDone with username : " + userName + " : Password : " + storedPassword + " : userRoles : " + userRole);
-                        saveUserDetails(userName);
-                        Intent intent = new Intent(requireContext(), MainActivity.class);
-                        startActivity(intent);
-                        requireActivity().finish();
+                        saveUserDetails(userName, userRole);
                     } else {
                         Toast.makeText(requireContext(), "Username or password is wrong", Toast.LENGTH_SHORT).show();
                     }
@@ -93,10 +92,15 @@ public class SignInFragment extends Fragment {
         });
     }
 
-    private void saveUserDetails(String userName) {
-        SharedPreferences sp = requireActivity().getSharedPreferences("loginInfoContactMGMT", MODE_PRIVATE);
+    private void saveUserDetails(String userName, String userRole) {
+        SharedPreferences sp = requireActivity().getSharedPreferences(LOGIN_CREDENTIALS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("userNameSPKCM", userName).apply();
+        editor.putString("userName_uc", userName).apply();
+        editor.putString("userRole_uc", userRole).apply();
+
+        Intent intent = new Intent(requireContext(), MainActivity.class);
+        startActivity(intent);
+        requireActivity().finish();
     }
 
     private boolean checkValidation() {
